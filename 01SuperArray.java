@@ -18,7 +18,13 @@ public class SuperArray{
     }
 
     public String toString(){
-	return "[ " + data.toString() + " ]";
+	String printThis = "";
+	printThis = "[ ";
+	for(int i = 0; i < data.length; i++){
+	    printThis = printThis + data[i] + " ";
+	}
+	printThis = printThis + "]";
+	return printThis;
     }
 
     public void add(Object e){
