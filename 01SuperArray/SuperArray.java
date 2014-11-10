@@ -37,7 +37,16 @@ public class SuperArray{
 
     public void add(Object e){
 	resize(countSize + 1);
+	if (data[0] == null){
+	    data[0] = e;
+	}else{
 	data[countSize - 1] = e;
+	}
+
+    }
+
+    public void add(int index, Object o){
+
     }
 
     public int getSize(){
