@@ -1,24 +1,18 @@
 public class SuperArray{
 
     Object[] data;
-    int countSize;
+    int countSize = 0;
 
     public SuperArray(){
-	setSize(10);
 	data = new Object[10];
     }
 
     public SuperArray(int length){
-        setSize(length);
 	data = new Object[length];
     }
 
-    public void setSize(int b){
-	countSize = b;
-    }
-
     public Object get(int index){
-	if (index > countSize - 1){
+	if (index > countSize - 1 || index < 0){
 	    System.out.println("ERROR: INDEX OUT OF RANGE");
 	}
 
@@ -46,7 +40,7 @@ public class SuperArray{
     }
 
     public void add(int index, Object o){
-
+	//if (index > 
     }
 
     public int getSize(){
