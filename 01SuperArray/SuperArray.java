@@ -51,6 +51,17 @@ public class SuperArray{
 	}
     }
 
+    public Object set(int index, Object o){
+	if (index >= countSize || index < 0){
+	    throw new IndexOutOfBoundsException();
+	}
+	Object keep = data[index];
+	data[index] = o;
+	return keep;
+    }
+
+    public void remove(int index){
+
     public int getSize(){
 	return countSize;
     }
