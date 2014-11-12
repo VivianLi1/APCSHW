@@ -60,7 +60,18 @@ public class SuperArray{
 	return keep;
     }
 
-    public void remove(int index){
+    public Object remove(int index){ 
+    //need to deal w/ size change and null return
+	Object removed = data[index];
+        if (index >= countSize || index < 0){
+	    throw new IndexOutOfBoundsException();
+	}
+	for (int i = index; i < data.length; i++){
+	    data[i] = data[i + 1];
+	}
+	return removed;
+    }
+
 
     public int getSize(){
 	return countSize;
