@@ -3,21 +3,28 @@ import java.util.*;
 public class ArrayListTest{
 
     static void collapseDuplicates(ArrayList<Integer> L){
-	for(int i = 0; i < L.size()-1; i++){
-	    if(L.get(i) == L.get(i + 1)){
-		L.remove(i+1);
+	int g = 0;
+	while(g < L.size() - 1){
+	    for(int i = 1; i < L.size()-1; i++){
+		if(L.get(g) == L.get(i)){
+		    L.remove(i);
+		}
+		g++;
 	    }
+	   
 	}
     }
 
+
     public static void main(String[]args){
 	ArrayList<Integer> K = new ArrayList<Integer>();
-	K.add(0, 1);
-	K.add(1, 2);
-	K.add(2, 2);
-	K.add(3, 3);
+	K.add(1);
+	K.add(2);
+	K.add(2);
+	K.add(2);
+	K.add(3);
 	System.out.println(K.toString());
-        collapseDuplicates(K);
+	collapseDuplicates(K);
 	System.out.println(K.toString());
 
     }
