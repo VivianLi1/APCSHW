@@ -50,6 +50,9 @@ public class WordGrid{
 	if(word.length() > data[row].length){
 	    b = false;
 	}
+	for(int i = 0; i < word.length(); i++){
+	    data[row][col + i] = word.charAt(i);
+	}
 	return b;
     }
 }

@@ -3,5 +3,6 @@ public class Driver{
 	WordGrid test = new WordGrid(5,5);
 	System.out.println(test.toString());
 	System.out.println(test.addWordHorizontal("apples", 3, 4));
+	System.out.println(test.toString());
     }
 }
