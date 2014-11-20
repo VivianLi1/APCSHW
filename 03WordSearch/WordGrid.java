@@ -44,6 +44,12 @@ public class WordGrid{
      *When the word doesn't fit, or there are overlapping letters that do not match,
      *then false is returned.
      */
-    //public boolean addWordHorizontal(String word, int row, int col){
-    //}
+    public boolean addWordHorizontal(String word, int row, int col){
+	boolean b = true;
+	boolean a = true;
+	if(word.length() > data[row].length){
+	    b = false;
+	}
+	return b;
+    }
 }
