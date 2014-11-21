@@ -59,4 +59,20 @@ public class WordGrid{
 	}
 	return b;
     }
+
+    public boolean addWordVertial(String word, int row, int col){
+	boolean b = true;
+	if(word.length() > data.length){
+	    return false;
+	}
+	for(int i = 0; i < word.length(); i++){
+	    if(data[row + i][col] != word.charAt(i)){
+		b = false;
+	    }
+	}
+	for(int i = 0; i < word.length(); i++){
+	    data[row + 1][col] = word.charAt(i);
+	}
+	return b;
+    }
 }
