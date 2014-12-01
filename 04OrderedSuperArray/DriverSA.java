@@ -1,11 +1,14 @@
 public class DriverSA{
     public static void main(String[]args){
-	SuperArray A = new SuperArray();
+	SuperArray A = new SuperArray(3);
 	SuperArray B = new SuperArray(3);
 	try{
-	System.out.println(B.toString()); // [ null null null ]
-	B.add(1);
-	System.out.println(B.toString());
+	    for(int i = 0; i < 3; i++){
+		A.set(i, ("" + ('a' + i)) ;	   
+	    }
+	    System.out.println(A.toString());
+	    A.add("dog");
+	    System.out.println(A.toString());
 	}
 	catch (IndexOutOfBoundsException e){
 	    System.out.println("Index out of bounds");

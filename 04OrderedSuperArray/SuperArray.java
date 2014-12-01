@@ -1,14 +1,14 @@
 public class SuperArray{
 
-    Object[] data;
+    String[] data;
     int countSize;
 
     public SuperArray(){
-	data = new Object[10];
+	data = new String[10];
     }
 
     public SuperArray(int length){
-	data = new Object[length];
+	data = new String[length];
     }
 
     public Object get(int index){
@@ -29,14 +29,21 @@ public class SuperArray{
 	return printThis;
     }
 
-    public void add(Object e){
+    public void add(String s){
 	if (data[data.length - 1] != null){
 	    resize(data.length * 2);
 	}
-	data[data.length - 1] = e;
+	data[data.length - 1] = s;
+	for(int i = 0; i < data.length; i++){
+	    if(s.compareTo(data[i]) > 0){
+		data[i] = data[i + 1];
+		data[i] = s;
+	    }
+	}
     }
 
-    public void add(int index, Object o){
+    /*
+    public void add(int index, String s){
 	if (index < 0){
 	    throw new IndexOutOfBoundsException();
 	}
@@ -50,13 +57,14 @@ public class SuperArray{
 	    }
 	}
     }
+    */
 
-    public Object set(int index, Object o){
+    public String set(int index, String s){
 	if (index >= countSize || index < 0){
 	    throw new IndexOutOfBoundsException();
 	}
-	Object keep = data[index];
-	data[index] = o;
+	String keep = data[index];
+	data[index] = s;
 	return keep;
     }
 
@@ -78,7 +86,7 @@ public class SuperArray{
     }
 
     public void resize(int newCapacity){
-	Object[] dataNew = new Object[newCapacity];
+	String[] dataNew = new String[newCapacity];
 	if (newCapacity > data.length){
 	    for (int i = 0; i < data.length; i++){
 		dataNew[i] = data[i];
