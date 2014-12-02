@@ -69,6 +69,7 @@ public class SuperArray{
 	for (int i = index; i < data.length; i++){
 	    data[i] = data[i + 1];
 	}
+	resize(countSize / 4);
 	return removed;
     }
 
@@ -93,6 +94,21 @@ public class SuperArray{
 	data = dataNew;
     }
 
-
+    public int compareTo(Object o){
+	String oString = o.toString();
+	compareTo(oString);
+    }
+    /*
+    public void insertionSort(){
+	Object temp;
+	for(int i = 0; i < data.length; i++){
+	    if(data[i].compareTo(data[i + 1]) > 0){
+		temp = data[i + 1];
+		data[i] = data[i + 1];
+		data[i] = temp;
+	    }
+	}
+    }
+    */
 }
 

@@ -4,7 +4,7 @@ public class DriverSA{
 	SuperArray B = new SuperArray(3);
 	try{
 	    for(int i = 0; i < 3; i++){
-		A.set(i, ("" + ('a' + i)) ;	   
+		A.set(i, (char)('a' + i)) ;	   
 	    }
 	    System.out.println(A.toString());
 	    A.add("dog");
