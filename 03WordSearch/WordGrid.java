@@ -15,7 +15,7 @@ public class WordGrid{
 	clear();
     }
 
-    public WordGrid(int rows, int cols, int thisSeed){
+    public WordGrid(int rows, int cols, long thisSeed){
         this(rows, cols);
 	setSeed(thisSeed);
     }
@@ -47,9 +47,7 @@ public class WordGrid{
 	boolean b = true;
 	if(checkWord(word, row, col, dx, dy)){
 	    for(int i = 0; i < word.length(); i++){
-		data[row][col] = word.charAt(i);
-		row += dx;
-		col += dy;
+		data[row + i * dy][col + i * dx] = word.charAt(i);
 	    }
 	}
 	else{ b = false;}
@@ -77,29 +75,12 @@ public class WordGrid{
     }
 
     private boolean checkWord(String word, int row, int col, int dx, int dy){
-	if (dx == 0 && dy == 0 ||
-	    row < 0 || col < 0 ||
-	    col + dy * word.length() > data[0].length || col + dy * word.length() < -1 || row + dx * word.length() > data.length || row + dx * word.length() < -1){
-	    return false;
-	}
-	for (int i = 0; i < word.length(); i++){
-	    if (data[row][col] != '-' && data[row][col] != word.charAt(i)){
-		return false;
-	    }
-	    row += dx;
-	    col += dy;
-	}
-	return true;
-    }
-    /*
-    private boolean checkWord(String word, int row, int col, int dx, int dy){
 	int l = word.length();
 	return ((dx == 0 && dy == 0) ||
 		row < 0 || col < 0 ||
 		row + dx * l >= data[0].length || row + dx * l < -1 ||
 		col + dy * l > data.length || col + dy * l < 0);
-	    }
-    */	    	
+    }	    	
 
     public void loadWordsFromFile(String fileName, boolean fillRandomLetters){
 	try{
