@@ -123,7 +123,24 @@ public class WordGrid{
     }
 
     public void addWord(String word, int row, int col, int dx, int dy){
+	if(checkWord(word, row, col, dx, dy)){
+	    for(int i = 0; i < word.length(); i++){
+		data[row][col] = word.charAt(i);
+		row += dx;
+		col += dy;
+	    }
+	}
     }
+
+    public boolean checkWord(String word, int row, int col, int dx, int dy){
+	int l = word.length();
+	return ((dx == 0 && dy == 0) ||
+		row < 0 || col < 0 ||
+		row + dx * l >= data[0].length || row + dx * l < -1 ||
+		col + dy * l > data.length || col + dy * l < 0);
+	    }
+	    
+	
 
     public void loadWordsFromFile(String fileName, boolean fillRandomLetters)
 	throws FileNotFoundException{
@@ -139,6 +156,7 @@ public class WordGrid{
 	    for(int j = 0; j < data[0].length; j++){
 		if(fillRandomLetters && data[i][j] == '-'){
 		    data[i][j] = (char)('a' + rand.nextInt(26));
+		    fillRest(fillRandomLetters);
 		}
 	    }
 	}
@@ -146,6 +164,26 @@ public class WordGrid{
 
     public void setSeed(long seed){
 	rand.setSeed(seed);
+    }
+
+    public void fillRest(boolean fill){
+	for(int i = 0; i < data.length; i++){
+	    for(int j = 0; j < data[0].length; j++){
+		if(fill && data[i][j] == '-' ){
+		    data[i][j] = (char)('a' + rand.nextInt(26));
+		}		
+	    }
+	}
+    }
+
+    public String wordsInPuzzle(){
+	String wordList = "";
+	for(int i = 0; i < words.size(); i++){
+	    wordList = wordList + words.get(i);
+	    //eight words per line
+	    if(i % 8 == 0){ wordList += "\n";}
+	}
+	return wordList;
     }
 }   
 

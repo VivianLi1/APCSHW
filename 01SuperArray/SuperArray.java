@@ -66,9 +66,11 @@ public class SuperArray{
         if (index >= countSize || index < 0){
 	    throw new IndexOutOfBoundsException();
 	}
+
 	for (int i = index; i < data.length; i++){
 	    data[i] = data[i + 1];
 	}
+	resize(data.length / 4);
 	return removed;
     }
 
