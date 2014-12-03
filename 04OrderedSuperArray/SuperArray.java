@@ -1,14 +1,14 @@
 public class SuperArray{
 
-    Object[] data;
+    String[] data;
     int countSize;
 
     public SuperArray(){
-	data = new Object[10];
+	data = new String[10];
     }
 
     public SuperArray(int length){
-	data = new Object[length];
+	data = new String[length];
     }
 
     public Object get(int index){
@@ -29,14 +29,21 @@ public class SuperArray{
 	return printThis;
     }
 
-    public void add(Object e){
+    public void add(String s){
 	if (data[data.length - 1] != null){
 	    resize(data.length * 2);
 	}
-	data[data.length - 1] = e;
+	data[data.length - 1] = s;
+	for(int i = 0; i < data.length; i++){
+	    if(s.compareTo(data[i]) > 0){
+		data[i] = data[i + 1];
+		data[i] = s;
+	    }
+	}
     }
 
-    public void add(int index, Object o){
+    /*
+    public void add(int index, String s){
 	if (index < 0){
 	    throw new IndexOutOfBoundsException();
 	}
@@ -50,13 +57,14 @@ public class SuperArray{
 	    }
 	}
     }
+    */
 
-    public Object set(int index, Object o){
+    public String set(int index, String s){
 	if (index >= countSize || index < 0){
 	    throw new IndexOutOfBoundsException();
 	}
-	Object keep = data[index];
-	data[index] = o;
+	String keep = data[index];
+	data[index] = s;
 	return keep;
     }
 
@@ -66,15 +74,9 @@ public class SuperArray{
         if (index >= countSize || index < 0){
 	    throw new IndexOutOfBoundsException();
 	}
-
 	for (int i = index; i < data.length; i++){
 	    data[i] = data[i + 1];
 	}
-<<<<<<< HEAD
-	resize(data.length / 4);
-=======
-	resize(countSize / 4);
->>>>>>> 78d74a6de077011ce8ebce033cb99263afb0f859
 	return removed;
     }
 
@@ -84,7 +86,7 @@ public class SuperArray{
     }
 
     public void resize(int newCapacity){
-	Object[] dataNew = new Object[newCapacity];
+	String[] dataNew = new String[newCapacity];
 	if (newCapacity > data.length){
 	    for (int i = 0; i < data.length; i++){
 		dataNew[i] = data[i];
@@ -99,21 +101,6 @@ public class SuperArray{
 	data = dataNew;
     }
 
-    public int compareTo(Object o){
-	String oString = o.toString();
-	compareTo(oString);
-    }
-    /*
-    public void insertionSort(){
-	Object temp;
-	for(int i = 0; i < data.length; i++){
-	    if(data[i].compareTo(data[i + 1]) > 0){
-		temp = data[i + 1];
-		data[i] = data[i + 1];
-		data[i] = temp;
-	    }
-	}
-    }
-    */
+
 }
 
