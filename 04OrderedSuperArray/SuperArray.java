@@ -9,6 +9,7 @@ public class SuperArray{
 
     public SuperArray(int length){
 	data = new String[length];
+	countSize = length;
     }
 
     public String get(int index){
@@ -30,10 +31,10 @@ public class SuperArray{
     }
 
     public void add(String s){
-	if (data[data.length - 1] != null){
+	if (get(getSize() - 1) != null){
 	    resize(data.length * 2);
 	}
-	data[data.length - 1] = s;
+	get(getSize() - 1) = s;
     }
 
     public void add(int index, String s){
@@ -112,5 +113,20 @@ public class SuperArray{
 	    }
 	}    
     }
+
+    public int find(String target){
+	int temp = 0;
+	for(int i = 0; i < getSize(); i++){
+	    if(get(i).equals(target)){
+		temp = i;
+	    }
+	}
+	return temp;
+    }
+    /*
+    public static void main(String[]args){
+	SuperArray test = new SuperArray();
+	for(int i = 
+    */
 }
 
