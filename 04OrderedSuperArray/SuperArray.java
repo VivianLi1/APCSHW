@@ -112,5 +112,8 @@ public class SuperArray{
 	    }
 	}    
     }
+
+    public void binarySort(){
+
 }
 
