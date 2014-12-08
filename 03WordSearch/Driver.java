@@ -27,12 +27,14 @@ public class Driver{
 	}
 
 	if(args.length < 2){
-	    test = new WordGrid(50, 50);
+	    test = new WordGrid(20, 20);
 	    System.out.println("USING DEFAULT PUZZLE CHOICES");
 	    test.loadWordsFromFile("words.txt", true);
 	}
-
-
+	if (args.length == 1){
+	    System.out.println("INVALID INPUT");
+	    System.out.println("USE THIS FORMAT: <rows> <cols> [<seed> [<show answer>]]");
+	}
 
 	System.out.println( "Find these words: \n" + test.wordsInPuzzle());
 	System.out.println(test);
