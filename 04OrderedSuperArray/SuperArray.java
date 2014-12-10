@@ -31,10 +31,10 @@ public class SuperArray{
     }
 
     public void add(String s){
-	if (get(getSize() - 1) != null){
+	if (data[getSize() - 1] != null){
 	    resize(data.length * 2);
 	}
-	get(getSize() - 1) = s;
+        data[getSize() - 1] = s;
     }
 
     public void add(int index, String s){
@@ -123,10 +123,14 @@ public class SuperArray{
 	}
 	return temp;
     }
-    /*
-    public static void main(String[]args){
-	SuperArray test = new SuperArray();
-	for(int i = 
-    */
+
+    public void selectionSort(){
+	for(int i = 0; i < getSize() - 1; i++){
+	    for(int j = 0; j < getSize() - 1; i++)
+	    if(get(i).compareTo(get(j + 1)) > 0){
+		set(i, get(j + 1));
+	    }
+	}
+    }
 }
 

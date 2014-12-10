@@ -7,8 +7,11 @@ public class DriverSA{
 		A.set(i, "" + (char)('a' + i)) ;	   
 	    }
 	    System.out.println(A.toString());
-	    A.add("dog");
+	    A.add(1, "cat");
 	    System.out.println(A.toString());
+	    A.selectionSort();
+	    // System.out.println(A.toString());
+
 	}
 	catch (IndexOutOfBoundsException e){
 	    System.out.println("Index out of bounds");
