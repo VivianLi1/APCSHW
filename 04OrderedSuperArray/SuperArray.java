@@ -114,6 +114,7 @@ public class SuperArray{
 	}    
     }
 
+<<<<<<< HEAD
     public int find(String target){
 	int temp = 0;
 	for(int i = 0; i < getSize(); i++){
@@ -132,5 +133,9 @@ public class SuperArray{
 	    }
 	}
     }
+=======
+    public void binarySort(){
+
+>>>>>>> c1899c038378131b863a3b25e728018e2c421ba4
 }
 

@@ -55,41 +55,52 @@ public class WordGrid{
     }
 
     public boolean addWordRandomly(String word){
-	boolean b = true;
+	boolean b;
 	int tries = 100;
-	for(int i = tries; i > 0; i--){	   
-	    if(addWord(word, rand.nextInt(data.length), rand.nextInt(data[0].length), rand.nextInt(3) - 1, rand.nextInt(3) - 1)){
-		break;
-	    }
-	    else{ b = (i != 0);}
+        do{
+	    b = addWord(word, rand.nextInt(data.length), rand.nextInt(data[0].length), rand.nextInt(3) - 1, rand.nextInt(3) - 1);
+	    tries--;
 	}
-	return b;
+	while(!b && tries > 0);
+   
+	return (tries != 0);
     }
 
     public void addListofWords(ArrayList<String> wordlist){
 	for(int i = 0; i < wordlist.size(); i++){
-	    if( addWordRandomly(wordlist.get(i))){
-		words.add(wordlist.get(i));
-	    }
+	    if(addWordRandomly(wordlist.get(i)))
+	    words.add(wordlist.get(i));
+	    
 	}
     }
 
     private boolean checkWord(String word, int row, int col, int dx, int dy){
 	int l = word.length();
-	return ((dx == 0 && dy == 0) ||
-		row < 0 || col < 0 ||
-		row + dx * l >= data[0].length || row + dx * l < -1 ||
-		col + dy * l > data.length || col + dy * l < 0);
+	if ((dx == 0 && dy == 0) ||
+	    row < 0 || col < 0 ||
+	    row + dy * l > data.length || row + dy * l < -1 ||
+	    col + dx * l > data[0].length || col + dx * l < -1){
+	    return false;
+	}
+        for(int i = 0; i < l; i++){
+	    if(data[row][col] != '-' && data[row][col] != word.charAt(i)){
+		return false;
+	    }
+	    row = row + dy;
+	    col = col + dx;	    
+	}
+	return true;
     }	    	
 
     public void loadWordsFromFile(String fileName, boolean fillRandomLetters){
 	try{
 	    File list = new File(fileName);
 	    Scanner in = new Scanner(list);
+	    ArrayList<String> puzzleWords = new ArrayList<String>();
 	    while(in.hasNext()){
-		words.add(in.next());
+		puzzleWords.add(in.next());
 	    }
-	    addListofWords(words);
+	    addListofWords(puzzleWords);
 	    if(fillRandomLetters){
 		fillRest(fillRandomLetters);
 	    }
@@ -118,8 +129,9 @@ public class WordGrid{
 	String wordList = "";
 	for(int i = 0; i < words.size(); i++){
 	    wordList = wordList + words.get(i) + " ";
-	    //eight words per line
-	    if(i % 8 == 0){ wordList += "\n";}
+	    if((i + 1) % 8 == 0){ 
+		wordList += "\n";
+	    }
 	}
 	return wordList;
     }
