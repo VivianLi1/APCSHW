@@ -1,5 +1,14 @@
-public class Sorts extends SuperArray{
+public class Sorts {
 
-    public int bubbleSort(){
+    private static int[] data;
+
+    public static void bubbleSort(){
 	int temp;
-	for(
+	for(int i = 0; i < data.length; i++){
+	    if(data[i].compareTo(data[i+1]) > 0){
+		temp = data[i];
+
+	    }
+	}
+    }
+}
