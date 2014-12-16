@@ -1,6 +1,7 @@
 public class Sorts extends SuperArray{
 
-    public int bubbleSort(){
+    public static void bubbleSort(){
 	int temp;
+	for(int i = 0; i < 
     }
 }
