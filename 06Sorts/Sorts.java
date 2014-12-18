@@ -12,11 +12,10 @@ public class Sorts{
     }
 
     public static void bubbleSort(int[] array){
-	int temp;
 	for(int i = 1; i < array.length; i++){
 	    for(int j = 0; j < array.length - i; j++){
 		if(array[j] > array[j + 1]){
-		    temp = array[j + 1];
+		    int temp = array[j + 1];
 		    array[j + 1] = array[j];
 		    array[j] = temp;
 		}
@@ -26,11 +25,28 @@ public class Sorts{
 
     public static void insertionSort(int[] array){
 	for(int i = 1; i < array.length; i++){
-	    int keep = array[i];
-	    for(int j = i - 1; j >= 0 && keep < array[j]; j--){
-		array[j + 1] = array[j];
-		array[j + 1] = keep;
+	    for(int j = i + 1; j <= 0; j++){
+		if(array[i] > array[j]){
+		    int temp = array[i];
+		    array[j + 1] = array[j];
+		    array[j + 1] = temp;
+		}
+	    }
+	}
+    }
+    public static void selectionSort(int[] array){
+	int hold = 0;
+	for(int i = 1; i < array.length; i++){
+	    for(int j = i + 1; j < array.length; j++){
+		if(array[j] < array[hold]){
+		    hold = j;
+		    int temp = array[i];
+		    array[i] = array[hold];
+		    array[hold] = temp;
+		}
 	    }
 	}
     }
 }
+
+
