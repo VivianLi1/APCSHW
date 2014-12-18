@@ -17,25 +17,33 @@ public class Driver{
 	System.out.print("bubble: ");
 	System.out.println(endTime - startTime);
 	System.out.println(Arrays.toString(clone));
+	
+	int[] clone2 = Arrays.copyOf(test, n);
+	startTime = System.currentTimeMillis();
+	Sorts.insertionSort(clone2);
+	endTime = System.currentTimeMillis();
+	System.out.print("insertion: ");
+	System.out.println(endTime - startTime);
+	System.out.println(Arrays.toString(clone));
+
 	/*
+	int[] clone3 = Arrays.copyOf(test, n);
 	startTime = System.currentTimeMillis();
-	Sorts.insertion(clone2);
+	Sorts.selectionSort(clone3);
 	endTime = System.currentTimeMillis();
-	System.out.println("insertion: ");
-	System.out.print(endTime - startTime);
-	
-	startTime = System.currentTimeMillis();
-	Sorts.selection(clone3);
-	endTime = System.currentTimeMillis();
-	System.out.println("selection: ");
-	System.out.print(endTime - startTime);
-	
+	System.out.print("selection: ");
+	System.out.println(endTime - startTime);
+	*/
+
+	int[] clone4 = Arrays.copyOf(test, n);
 	startTime = System.currentTimeMillis();
 	Arrays.sort(clone4);
 	endTime = System.currentTimeMillis();
-	System.out.println("Array.sort: ");
-	System.out.print(endTime - startTime);
-	*/
+	System.out.print("Array.sort: ");
+	System.out.println(endTime - startTime);
+	System.out.println(Arrays.toString(clone));
+
+	
     }
 }
 

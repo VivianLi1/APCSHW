@@ -25,6 +25,12 @@ public class Sorts{
     }
 
     public static void insertionSort(int[] array){
-	for(inti = 1; i < array.length
+	for(int i = 1; i < array.length; i++){
+	    int keep = array[i];
+	    for(int j = i - 1; j >= 0 && keep < array[j]; j--){
+		array[j + 1] = array[j];
+		array[j + 1] = keep;
+	    }
+	}
     }
 }
