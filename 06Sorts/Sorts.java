@@ -25,15 +25,17 @@ public class Sorts{
 
     public static void insertionSort(int[] array){
 	for(int i = 1; i < array.length; i++){
-	    for(int j = i + 1; j <= 0; j++){
-		if(array[i] > array[j]){
-		    int temp = array[i];
-		    array[j + 1] = array[j];
-		    array[j + 1] = temp;
-		}
+ 	    int temp = array[i];
+	    int j = i - 1;
+	    while(j > -1 && array[j] > temp){
+		array[j + 1] = array[j];
+		j--;
 	    }
-	}
+	    array[j + 1] = temp;
+	}	
     }
+
+
     public static void selectionSort(int[] array){
 	int hold = 0;
 	for(int i = 1; i < array.length; i++){
