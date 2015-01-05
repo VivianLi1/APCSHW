@@ -2,6 +2,14 @@ import java.util.*;
 
 public class Sorts{
 
+    public static String name(){
+	return "Li,Vivian";
+    }
+
+    public static int period(){
+	return 6;
+    }
+
     public static int[] makeArray(int n){
         int[] arr = new int[n];
 	Random rand = new Random();
@@ -49,6 +57,24 @@ public class Sorts{
 	    }
 	}
     }
+
+    public static void radixSort(int[] array){
+	//creates buckets
+	ArrayList<ArrayList> buckets = new ArrayList<ArrayList>();
+	for(int i = 0; i < 10; i++){
+	    buckets.add(new ArrayList<Integers>());
+	}
+	//finds max element
+	int max = array[0];
+	for(int i = 1; i < array.length; i++){
+	    if(array[i] > max){
+		max = array[i];
+	    }
+	}
+
+	for(int j = 1; j < max; j++){
+	    for(int k = 0; k < array.length; k++){
+int 
 }
 
 
